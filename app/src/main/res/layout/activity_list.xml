@@ -8,11 +8,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="353dp"
-        android:layout_height="731dp"
+        android:layout_width="352dp"
+        android:layout_height="694dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:orientation="vertical"
@@ -43,8 +43,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/add_button"
                 android:onClick="add"
-                android:text="項目を追加"
-                />
+                android:text="項目を追加" />
 
         </LinearLayout>
 
