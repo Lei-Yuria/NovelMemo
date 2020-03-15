@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -36,6 +37,7 @@ public class ListActivity extends AppCompatActivity {
 
 
         list = (ListView) findViewById(R.id.list);
+        add = (Button) findViewById(R.id.add);
         editText = (EditText) findViewById(R.id.editText);
         adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_1);
 
@@ -61,13 +63,13 @@ public class ListActivity extends AppCompatActivity {
             }
         });
 
-            setContentView(R.layout.activity_list);
 
-            TextView textView = (TextView) findViewById(R.id.editText);
-            registerForContextMenu(textView);
+        TextView textView = (TextView) findViewById(R.id.editText);
+        registerForContextMenu(textView);
 
-        add.setOnClickListener(new OnClickListener(){
-            private void add(OnClickListener){
+        add.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 String text;
                 text = editText.getText().toString();
 
@@ -80,34 +82,35 @@ public class ListActivity extends AppCompatActivity {
                 editor.commit();
 
             }
-
-
         });
 
 
     }
 
-
-
     @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        getMenuInflater().inflate(R.menu.activity_menu, menu);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
+
     @Override
-    public boolean onContextItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.listview1_delete:
-                Toast.makeText(this, "削除されました", Toast.LENGTH_LONG).show();
+            case R.id.menuItem1:
+                Toast.makeText(getApplicationContext(),"削除されました",Toast.LENGTH_SHORT);
                 return true;
+
+            case R.id.menuItem2:
+                return true;
+
             default:
-                return super.onContextItemSelected(item);
+                return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
+
+
 
 
 
